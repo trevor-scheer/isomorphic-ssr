@@ -1,27 +1,9 @@
 const path = require('path');
+const sharedConfig = require('./webpack.shared.config.js');
 
-module.exports = {
-  mode: 'development',
+const serverConfig = {
   target: 'node',
-  entry: {
-    server: path.join(__dirname, 'src', 'server', 'index.js')
-  },
-  output: {
-    path: path.join(__dirname, 'dist'),
-    filename: '[name].js'
-  },
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['env', 'react']
-          }
-        }
-      }
-    ]
-  }
+  entry: {server: path.join(__dirname, 'src', 'server', 'index.js')}
 };
+
+module.exports = Object.assign({}, serverConfig, sharedConfig);

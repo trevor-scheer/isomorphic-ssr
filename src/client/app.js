@@ -1,7 +1,7 @@
 import React from 'react';
 import {Switch, Route, Redirect, Link} from 'react-router-dom';
-import Books from './books';
-import Users from './users';
+import Books from './pages/books';
+import Users from './pages/users';
 
 const App = props => {
   return (
