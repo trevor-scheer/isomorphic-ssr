@@ -1,32 +1,24 @@
-import React from 'react';
-import {Switch, Route, Redirect, Link} from 'react-router-dom';
+import React, {Fragment} from 'react';
+import {Link} from 'react-router-dom';
 import Books from './pages/books';
 import Users from './pages/users';
+import {renderRoutes} from 'react-router-config';
+import './App.scss';
 
-const App = props => {
-  return (
-    <div>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/test">Books</Link>
-          </li>
-          <li>
-            <Link to="/users">Users</Link>
-          </li>
-        </ul>
-      </nav>
-      <Switch>
-        <Redirect exact from="/" to="/test" />
-        <Route path="/test">
-          <Books />
-        </Route>
-        <Route path="/users">
-          <Users />
-        </Route>
-      </Switch>
-    </div>
-  );
-};
+const App = props => (
+  <Fragment>
+    <nav className="App-header">
+      <ul>
+        <li>
+          <Link to="/books">Books</Link>
+        </li>
+        <li>
+          <Link to="/users">Users</Link>
+        </li>
+      </ul>
+    </nav>
+    {renderRoutes(props.route.routes)}
+  </Fragment>
+);
 
 export default App;

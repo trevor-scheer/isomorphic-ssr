@@ -5,8 +5,8 @@ import {ApolloProvider} from 'react-apollo';
 import {ApolloClient} from 'apollo-client';
 import {createHttpLink} from 'apollo-link-http';
 import {InMemoryCache} from 'apollo-cache-inmemory';
-
-import App from './app';
+import routes from './routes';
+import {renderRoutes} from 'react-router-config';
 
 const client = new ApolloClient({
   link: createHttpLink({
@@ -18,9 +18,7 @@ const client = new ApolloClient({
 
 hydrate(
   <ApolloProvider client={client}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <BrowserRouter>{renderRoutes(routes)}</BrowserRouter>
   </ApolloProvider>,
   document.getElementById('main')
 );

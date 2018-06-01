@@ -16,9 +16,13 @@ const Books = props => (
   <Query query={books}>
     {({data, loading}) =>
       loading ? null : (
-        <div className="Books">
-          {data.books.map(book => <p key={book.author}>{book.author}</p>)}
-        </div>
+        <ul>
+          {data.books.map(book => (
+            <li key={book.author}>
+              <p>{book.author}</p>
+            </li>
+          ))}
+        </ul>
       )
     }
   </Query>
